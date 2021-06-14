@@ -17,9 +17,9 @@
 
 ---
 
-Link to Active Page:
+Link to Active Page: https://tmc-glitch.github.io/RandomRecipeGenerator/
 
-Link to Github:
+Link to Github: https://github.com/TMC-glitch/RandomRecipeGenerator
 
 
 
