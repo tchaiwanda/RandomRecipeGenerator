@@ -15,10 +15,15 @@ getMealBtn.addEventListener("click", () => {
 getFavorites.addEventListener("click", () => {
   let favoritesArray = JSON.parse(localStorage.getItem("favorites"))
   if (favoritesArray){
+    // Puts favorites into a unordered list format
     let list = document.createElement("ul")
+    // loops over favorites
     for (let i=0; i< favoritesArray.length; i++){
+      // creates element list of favorites
       let listItem = document.createElement("li")
+      // sets value of of list item to favorites index
       listItem.setAttribute("value", favoritesArray[i].id)
+      // listening for click event on item inside the favorites list to open that saved recipe
       listItem.addEventListener("click",() =>{
         fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${favoritesArray[i].id}`)
     .then((res) => res.json())
@@ -50,7 +55,7 @@ ${meal[`strMeasure${i}`]}`
 // Shows ingredients in the console
 console.log(ingredients);
 
-// Creating column + rows using inner HTML
+// Using inner HTML to create List of ingredients, Recipe instructions and adding video.
   mealContainer.innerHTML = `
     <div class="row">
     <div class="columns five">
@@ -87,13 +92,13 @@ let saveButton = document.createElement("button")
   saveButton.innerText = "Add To Favorites"
 
   saveButton.addEventListener("click",() =>{
-
+// Stores clicked item to favorites
     let favorites = localStorage.getItem("favorites")
     favorites = JSON.parse(favorites)
     if (!favorites){
       favorites = []
     }
-
+// stores favorite by id and name
 const newFavorite = {
   id: meal.idMeal, title: meal.strMeal
 }
@@ -101,5 +106,6 @@ favorites.push(newFavorite)
 
 localStorage.setItem("favorites", JSON.stringify(favorites))
   })
+  // shows it on the screen
   mealContainer.prepend(saveButton)
 }
